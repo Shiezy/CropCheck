@@ -2,10 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@drawable/backgrnd">
+    android:background="@drawable/backgrnd"
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -16,8 +17,10 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="184dp" />
+        tools:layout_editor_absoluteY="215dp" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="388dp"
@@ -35,30 +38,61 @@
         <EditText
             android:id="@+id/editText5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/rounded_edit_text"
             android:ems="10"
+            android:hint="Email"
             android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="82dp"
-            tools:layout_editor_absoluteY="88dp" />
-
-        <EditText
-            android:id="@+id/editText6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="phone"
-            tools:layout_editor_absoluteX="82dp"
-            tools:layout_editor_absoluteY="152dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/loginbtn"
+            android:id="@+id/registerbtn"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="206dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorGrey"
+            android:layout_width="215dp"
+            android:layout_height="41dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/buttons"
             android:text="Submit"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="235dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="173dp" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_edit_text"
+            android:ems="10"
+            android:hint="Pasword"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/registerbtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText5"
+            app:layout_constraintVertical_bias="0.428" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have account? Sign Up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="297dp" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
