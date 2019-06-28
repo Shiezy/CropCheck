@@ -12,17 +12,16 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/five"
+        android:layout_marginLeft="@dimen/five"
+        android:layout_marginTop="@dimen/five"
+        android:layout_marginEnd="@dimen/five"
+        android:layout_marginRight="@dimen/five"
+        android:layout_marginBottom="@dimen/five"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
@@ -34,8 +33,7 @@
             android:text="Login"
             android:textSize="30sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="156dp"
-            tools:layout_editor_absoluteY="317dp" />
+             />
 
         <EditText
             android:id="@+id/editText5"
@@ -48,8 +46,7 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="87dp"
-            tools:layout_editor_absoluteY="56dp" />
+             />
 
 
         <EditText
@@ -63,11 +60,10 @@
             android:ems="10"
             android:hint="Pasword"
             android:inputType="textPassword"
-            tools:layout_editor_absoluteX="87dp"
-            tools:layout_editor_absoluteY="113dp" />
+             />
 
         <Button
-            android:id="@+id/registerbtn"
+            android:id="@+id/loginbtn"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="215dp"
             android:layout_height="41dp"
@@ -80,7 +76,7 @@
             android:text="Submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="173dp" />
+             />
 
         <TextView
             android:id="@+id/textView3"
@@ -90,7 +86,7 @@
             android:text="Don't have account? Sign Up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="297dp" />
+             />
     </LinearLayout>
 
     <ImageView
