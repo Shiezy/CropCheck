@@ -8,4 +8,9 @@
         android:bottomLeftRadius="10dp"
         android:topLeftRadius="10dp"
         android:topRightRadius="10dp"/>
+    <padding
+        android:top="@dimen/ten"
+        android:bottom="@dimen/ten"
+        android:right="@dimen/ten"
+        android:left="@dimen/ten"/>
 </shape>
