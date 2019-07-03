@@ -2,6 +2,7 @@ package com.example.cropcheck;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -12,8 +13,17 @@ import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.cropcheck.models.Authorization;
+import com.example.cropcheck.services.AuthService;
+import com.example.cropcheck.utils.CoreUtils;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -48,12 +58,28 @@ public class LoginActivity extends AppCompatActivity {
         textView.setText(myString);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
 
+        final EditText phone = (EditText)findViewById(R.id.editText5);
+        final EditText password = (EditText)findViewById(R.id.editText8);
 
         Button btn = (Button)findViewById(R.id.loginbtn);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Call<Authorization> call = CoreUtils.getRetrofitClient().create(AuthService.class).login(phone.getText().toString(), password.getText().toString());
+                 call.enqueue(new Callback<Authorization>() {
+                     @Override
+                     public void onResponse(Call<Authorization> call, Response<Authorization> response) {
+                         if(response.body() != null){
+                             PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("ACCESS_TOKEN", response.body().access_token);
+                         }
+                     }
+
+                     @Override
+                     public void onFailure(Call<Authorization> call, Throwable t) {
+
+                     }
+                 });
                 startActivity(new Intent(LoginActivity.this, AddSiteActivity.class));
             }
         });
