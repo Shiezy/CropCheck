@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorGrey">#302D2D</color>
     <color name="colorEditText">#90b8b9ba</color>
+    <color name="primaryGreen">#60BF01</color>
+    <color name="transparent">#ffffffff</color>
 </resources>
