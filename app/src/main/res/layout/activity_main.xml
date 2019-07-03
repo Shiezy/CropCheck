@@ -110,13 +110,13 @@
                         android:id="@+id/sitesbutton"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@mipmap/ic_sprout_round"
+                        android:src="@mipmap/ic_sprout_transparent"
                         android:layout_marginBottom="8dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/sites"
                         android:text="Sites"
-                        android:textSize="16sp"
+                        android:textSize="10sp"
                         android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -134,13 +134,13 @@
                         android:id="@+id/policiesbutton"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@mipmap/ic_cover_round"
+                        android:src="@mipmap/ic_round_transparent"
                         android:layout_marginBottom="8dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/policies"
                         android:text="Policies"
-                        android:textSize="16sp"
+                        android:textSize="10sp"
                         android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -158,13 +158,13 @@
                         android:id="@+id/diagnosebutton"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@mipmap/ic_diagnose_round"
+                        android:src="@mipmap/ic_diagnose_transparent"
                         android:layout_marginBottom="8dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/diagnose"
                         android:text="Diagnostics"
-                        android:textSize="16sp"
+                        android:textSize="10sp"
                         android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -182,13 +182,13 @@
                         android:id="@+id/recommendbutton"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@mipmap/ic_recommend_round"
+                        android:src="@mipmap/ic_recommend_transparent"
                         android:layout_marginBottom="8dp" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/recommend"
-                        android:text="Recommendations"
-                        android:textSize="16sp"
+                        android:text="History"
+                        android:textSize="10sp"
                         android:gravity="center"
                         android:textColor="#000"
                         android:layout_width="wrap_content"

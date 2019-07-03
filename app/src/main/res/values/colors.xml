@@ -7,4 +7,5 @@
     <color name="colorEditText">#90b8b9ba</color>
     <color name="primaryGreen">#60BF01</color>
     <color name="transparent">#ffffffff</color>
+    <color name="secondaryBlue">#44BDDF</color>
 </resources>
