@@ -29,12 +29,12 @@ public class LoginActivity extends AppCompatActivity {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View textView) {
-                Toast.makeText(getApplicationContext(),"juhnybgtvfrcdesxwza",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         };
 
         //For Click
-        myString.setSpan(clickableSpan,registerString.indexOf("?"),registerString.indexOf("."), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        myString.setSpan(clickableSpan,registerString.indexOf("S"),registerString.indexOf("."), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         //For UnderLine
 //        myString.setSpan(new UnderlineSpan(),startIndex,lastIndex,0);
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, AddSiteActivity.class));
             }
         });
     }
