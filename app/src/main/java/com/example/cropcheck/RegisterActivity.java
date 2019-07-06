@@ -1,7 +1,10 @@
 package com.example.cropcheck;
 
+import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +14,8 @@ import com.example.cropcheck.services.AuthService;
 import com.example.cropcheck.utils.CoreUtils;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -30,9 +35,23 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Call<Authorization> call = CoreUtils.getRetrofitClient().create(AuthService.class).
-                        register(name.getText().toString(), email.getText().toString(),
+                        register(name.getText().toString(),
+                                email.getText().toString(),
                                 national_id.getText().toString(), phone.getText().toString(),
                                 password.getText().toString(), password_confirmation.getText().toString());
+                call.enqueue(new Callback<Authorization>() {
+                    @Override
+                    public void onResponse(Call<Authorization> call, Response<Authorization> response) {
+                        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("ACCESS_TOKEN", response.body().access_token);
+                        startActivity(new Intent(RegisterActivity.this, AddSiteActivity.class));
+                        Log.e("whhh", "SUCCESS");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Authorization> call, Throwable t) {
+                        Log.e("whhh", t.getMessage());
+                    }
+                });
             }
         });
     }

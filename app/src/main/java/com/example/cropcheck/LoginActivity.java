@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         Button btn = (Button)findViewById(R.id.loginbtn);
 
         btn.setOnClickListener(new View.OnClickListener() {
-            @Override,
+            @Override
             public void onClick(View v) {
                 Call<Authorization> call = CoreUtils.getRetrofitClient().create(AuthService.class).login(phone.getText().toString(), password.getText().toString());
                  call.enqueue(new Callback<Authorization>() {
