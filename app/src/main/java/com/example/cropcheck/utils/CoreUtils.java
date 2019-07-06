@@ -20,7 +20,7 @@ public class CoreUtils {
 
 
 //    public static String base_url="http://192.168.100.109/OnceSync/public/api/";
-    public static String base_url="http://192.168.100.181/oncesync-laravel/public/api/";
+    public static String base_url="http://198.211.102.248/app-server/public/api/";
 
     public static Retrofit getRetrofitClient() {
         if (retrofit == null) {
