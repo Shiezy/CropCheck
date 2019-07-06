@@ -22,17 +22,43 @@
         <!--app:layout_constraintTop_toTopOf="parent">-->
 
         <ImageView
+            android:id="@+id/site_image"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@mipmap/ic_launcher_transparent"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/text_list_item"
+            android:id="@+id/site_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:text="Example List"/>
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="0dp"
+            android:text="CropCheck User"
+            android:textColor="#000"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/site_image"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/site_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="33716077"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="0dp"
+            android:textColor="#000"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@id/site_image"
+            app:layout_constraintTop_toBottomOf="@id/site_name"/>
+
+    </LinearLayout>
 
     </LinearLayout>
 

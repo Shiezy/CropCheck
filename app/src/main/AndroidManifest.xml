@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cropcheck">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustResize">
-        <activity android:name=".AddSiteActivity"></activity>
+        <activity android:name=".AllSitesActivity"></activity>
+        <activity android:name=".AddSiteActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
