@@ -76,7 +76,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/county"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/twenty"
@@ -86,6 +86,29 @@
             android:ems="10"
             android:hint="county,division,village"
             android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/division"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginRight="@dimen/twenty"
+            android:background="@drawable/rounded_edit_text"
+            android:ems="10"
+            android:hint="division"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/village"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginRight="@dimen/twenty"
+            android:background="@drawable/rounded_edit_text"
+            android:ems="10"
+            android:hint="village"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/button"
@@ -94,6 +117,7 @@
             android:layout_marginLeft="@dimen/twenty"
             android:layout_marginTop="@dimen/twenty"
             android:layout_marginRight="@dimen/twenty"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/buttons"
             android:text="Button" />
 
