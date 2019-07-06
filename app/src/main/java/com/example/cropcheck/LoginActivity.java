@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         Button btn = (Button)findViewById(R.id.loginbtn);
 
         btn.setOnClickListener(new View.OnClickListener() {
-            @Override,
+            @Override
             public void onClick(View v) {
                 Call<Authorization> call = CoreUtils.getRetrofitClient().create(AuthService.class).login(phone.getText().toString(), password.getText().toString());
                  call.enqueue(new Callback<Authorization>() {
@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                      public void onResponse(Call<Authorization> call, Response<Authorization> response) {
                          if(response.body() != null){
                              PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("ACCESS_TOKEN", response.body().access_token);
+                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                          }
                      }
 
@@ -80,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
 
                      }
                  });
-                startActivity(new Intent(LoginActivity.this, AddSiteActivity.class));
             }
         });
     }
