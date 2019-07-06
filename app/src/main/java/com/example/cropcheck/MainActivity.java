@@ -63,6 +63,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button siteBtn = (Button)findViewById(R.id.sites);
+
+        siteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddSiteActivity.class));
+            }
+        });
+
+
         username = findViewById(R.id.username);
         natid = findViewById(R.id.natid);
 
