@@ -28,13 +28,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:autoText="false"
-            android:text="Login"
+            android:text="@string/login"
             android:textSize="30sp"
             android:textStyle="bold"
              />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/phoneId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/twenty"
@@ -42,13 +42,13 @@
             android:layout_marginRight="@dimen/twenty"
             android:background="@drawable/rounded_edit_text"
             android:ems="10"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+            android:hint="phone"
+            android:inputType="number"
              />
 
 
         <EditText
-            android:id="@+id/editText8"
+            android:id="@+id/passwordId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/twenty"
