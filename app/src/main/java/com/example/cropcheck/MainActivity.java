@@ -156,6 +156,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getToken(){
-        return PreferenceManager.getDefaultSharedPreferences(this).getString("ACCESS_TOKEN", null);
+        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
     }
 }

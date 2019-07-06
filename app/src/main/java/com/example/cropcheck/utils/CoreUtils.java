@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import java.util.concurrent.Executors;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -24,6 +25,8 @@ public class CoreUtils {
 
     public static Retrofit getRetrofitClient() {
         if (retrofit == null) {
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             Retrofit.Builder builder = new Retrofit.Builder()
                     .baseUrl(CoreUtils.base_url)
                     .addConverterFactory(GsonConverterFactory.create(CoreUtils.gson()))
@@ -31,6 +34,7 @@ public class CoreUtils {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             NoCacheInterceptor noCacheInterceptor = new NoCacheInterceptor();
             httpClient.addInterceptor(noCacheInterceptor);
+            httpClient.addInterceptor(logging);
             builder.client(httpClient.build());
             retrofit = builder.build();
         }
@@ -47,6 +51,9 @@ public class CoreUtils {
     public static Retrofit getAuthRetrofitClient(String token) {
         if (auth_retrofit == null) {
 
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
             Retrofit.Builder builder = new Retrofit.Builder()
                     .baseUrl(CoreUtils.base_url)
                     .addConverterFactory(GsonConverterFactory.create(CoreUtils.gson()))
@@ -57,6 +64,7 @@ public class CoreUtils {
             NoCacheInterceptor noCacheInterceptor = new NoCacheInterceptor();
             httpClient.addInterceptor(interceptor);
             httpClient.addInterceptor(noCacheInterceptor);
+            httpClient.addInterceptor(logging);
             builder.client(httpClient.build());
 
             auth_retrofit=builder.build();
