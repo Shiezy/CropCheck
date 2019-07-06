@@ -30,7 +30,6 @@
             android:gravity="center_horizontal"
             android:orientation="vertical"
 
-
             >
 
             <TextView
@@ -43,7 +42,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/nameId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/twenty"
@@ -55,7 +54,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editText11"
+                android:id="@+id/phoneId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/twenty"
@@ -67,7 +66,7 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/emailId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/twenty"
@@ -79,7 +78,7 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/editText10"
+                android:id="@+id/nationalId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/twenty"
@@ -91,7 +90,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/passwordId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/twenty"
@@ -103,7 +102,7 @@
                 android:inputType="textPassword" />
 
             <EditText
-                android:id="@+id/editText13"
+                android:id="@+id/password_confirmationId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/twenty"
@@ -115,7 +114,7 @@
                 android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/loginbtn"
+                android:id="@+id/registerbtn"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

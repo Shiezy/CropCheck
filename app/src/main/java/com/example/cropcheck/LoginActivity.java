@@ -58,13 +58,13 @@ public class LoginActivity extends AppCompatActivity {
         textView.setText(myString);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
 
-        final EditText phone = (EditText)findViewById(R.id.editText5);
-        final EditText password = (EditText)findViewById(R.id.editText8);
+        final EditText phone = (EditText)findViewById(R.id.phoneId);
+        final EditText password = (EditText)findViewById(R.id.passwordId);
 
         Button btn = (Button)findViewById(R.id.loginbtn);
 
         btn.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @Override,
             public void onClick(View v) {
                 Call<Authorization> call = CoreUtils.getRetrofitClient().create(AuthService.class).login(phone.getText().toString(), password.getText().toString());
                  call.enqueue(new Callback<Authorization>() {
