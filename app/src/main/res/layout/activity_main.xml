@@ -117,6 +117,9 @@
                         android:id="@+id/sites"
                         android:text="Sites"
                         android:textSize="10sp"
+                        android:minHeight="25dp"
+                        android:minWidth="60dp"
+                        android:background="@drawable/cardlayout"
                         android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -142,6 +145,9 @@
                         android:text="Policies"
                         android:textSize="10sp"
                         android:textColor="#000"
+                        android:background="@drawable/cardlayout"
+                        android:minHeight="25dp"
+                        android:minWidth="60dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -166,6 +172,9 @@
                         android:text="Diagnostics"
                         android:textSize="10sp"
                         android:textColor="#000"
+                        android:background="@drawable/cardlayout"
+                        android:minHeight="25dp"
+                        android:minWidth="60dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -191,6 +200,9 @@
                         android:textSize="10sp"
                         android:gravity="center"
                         android:textColor="#000"
+                        android:minHeight="25dp"
+                        android:minWidth="60dp"
+                        android:background="@drawable/cardlayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -202,44 +214,33 @@
         </LinearLayout>
 
 
-    <ImageView
-        android:id="@+id/launcher"
-        android:layout_width="118dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:src="@mipmap/ic_launcher_transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/ll1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll1" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="CropCheck"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/launcher" />
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="8dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/customRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-    <!--</ScrollView>-->
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
