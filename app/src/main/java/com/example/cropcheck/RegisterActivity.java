@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Authorization> call, Response<Authorization> response) {
                         PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("ACCESS_TOKEN", response.body().access_token);
-                        startActivity(new Intent(RegisterActivity.this, AddSiteActivity.class));
+                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                         Log.e("whhh", "SUCCESS");
                     }
 
