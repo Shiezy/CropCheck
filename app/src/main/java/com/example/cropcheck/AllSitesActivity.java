@@ -37,8 +37,13 @@ public class AllSitesActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     response.body(); // have your all data
                     int id =response.body().getId();
-                    String userName = response.body().getName();
-                    textView4.setText(userName);
+                    final String userName = response.body().getName();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView4.setText(userName);
+                        }
+                    });
                 }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
             }
 
@@ -50,6 +55,6 @@ public class AllSitesActivity extends AppCompatActivity {
     }
 
     public String getToken(){
-        return PreferenceManager.getDefaultSharedPreferences(this).getString("ACCESS_TOKEN", null);
+        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
     }
 }

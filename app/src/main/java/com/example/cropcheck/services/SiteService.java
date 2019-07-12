@@ -8,7 +8,9 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface SiteService {
 
@@ -18,6 +20,7 @@ public interface SiteService {
                        @Field("county") String county, @Field("division") String division,
                        @Field("village") String village);
 
-    @GET("get_sites")
-    Call<List<Site>> getAllSites();
+
+    @GET("get_all_farms/{user_id}")
+    Call<List<Site>> getAllSites(@Path("user_id") int user_id);
 }

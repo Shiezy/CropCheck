@@ -23,8 +23,6 @@ import java.util.List;
 
 import adapter.CustomAdapter;
 import model.RetroPhoto;
-import network.GetDataService;
-import network.RetrofitClientInstance;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,31 +33,52 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ProgressDialog progressDoalog;
 
+    Integer user_id;
+    String user_name;
+    MyAdapter myAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getToken() == null){
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+
         setContentView(R.layout.activity_main);
+
+        username = findViewById(R.id.username);
+        natid = findViewById(R.id.natid);
+
+        final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
+        user.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+                    user_id = response.body().getId();
+                    user_name = response.body().getName();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            username.setText(user_name);
+                            loadSites();
+                        }
+                    });
+
+                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
 
         progressDoalog = new ProgressDialog(MainActivity.this);
         progressDoalog.setMessage("Loading....");
         progressDoalog.show();
-
-//        GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-//        Call<List<RetroPhoto>> call = service.getAllPhotos();
-//        call.enqueue(new Callback<List<RetroPhoto>>() {
-//            @Override
-//            public void onResponse(Call<List<RetroPhoto>> call, Response<List<RetroPhoto>> response) {
-//                progressDoalog.dismiss();
-//                generateDataList(response.body());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<RetroPhoto>> call, Throwable t) {
-//                progressDoalog.dismiss();
-//                Toast.makeText(MainActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         Button btn = (Button)findViewById(R.id.diagnose);
 
@@ -79,10 +98,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        username = findViewById(R.id.username);
-        natid = findViewById(R.id.natid);
-
         //import fonts
         Typeface Mlight = Typeface.createFromAsset(getAssets(), "fonts/ML.ttf");
         Typeface MMedium = Typeface.createFromAsset(getAssets(), "fonts/MM.ttf");
@@ -93,58 +108,40 @@ public class MainActivity extends AppCompatActivity {
         natid.setTypeface(Mlight);
 
         recyclerView = findViewById(R.id.my_recycler_view);
-//
-//        // use this setting to improve performance if you know that changes
-//        // in content do not change the layout size of the RecyclerView
-//        recyclerView.setHasFixedSize(true);
-//
-//        // use a linear layout manager
-////        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        // specify an adapter (see also next example)
-//        mAdapter = new MyAdapter(myDataset);
-        String[] myDataset= new String[7];
-        myDataset[0] = "Cat";
-        myDataset[1] = "Dog";
-        myDataset[2] = "Elephant";
-        myDataset[3] = "Losing";
-        myDataset[4] = "My";
-        myDataset[5] = "Fucking";
-        myDataset[6] = "Mind";
-        recyclerView.setAdapter(new MyAdapter(myDataset));
 
-//        Call<List<Site>> sites = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getAllSites();
-//        sites.enqueue(new Callback<List<Site>>() {
-//            @Override
-//            public void onResponse(Call<List<Site>> call, Response<List<Site>> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Site>> call, Throwable t) {
-//
-//            }
-//        });
+        myAdapter = new MyAdapter(getApplicationContext());
 
-        final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
-        user.enqueue(new Callback<User>() {
+        recyclerView.setAdapter(myAdapter);
+
+
+
+    }
+
+    private void loadSites() {
+        Call<List<Site>> sites = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getAllSites(user_id);
+        sites.enqueue(new Callback<List<Site>>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<List<Site>> call, final Response<List<Site>> response) {
                 if(response.isSuccessful()){
-                    response.body(); // have your all data
-                    int id =response.body().getId();
-                    String userName = response.body().getName();
-                    username.setText(userName);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            dataReceived(response.body());
+                        }
+                    });
                 }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<List<Site>> call, Throwable t) {
 
             }
         });
+    }
 
+    private void dataReceived(List<Site> sites) {
+        myAdapter.updateData(sites);
     }
 
     private void generateDataList(List<RetroPhoto> photoList) {
