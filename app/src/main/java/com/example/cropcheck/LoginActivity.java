@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                      public void onResponse(Call<Authorization> call, Response<Authorization> response) {
                          if(response.body() != null){
                              PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("ACCESS_TOKEN", response.body().access_token).apply();
-                             startActivity(new Intent(LoginActivity.this, AllSitesActivity.class));
+                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                          }
                      }
 
