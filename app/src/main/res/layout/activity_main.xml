@@ -215,6 +215,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll5"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_weight="1"
@@ -223,7 +224,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ll1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/footer">
 
             <Button
                 android:id="@+id/add_site_button"
@@ -235,24 +236,43 @@
                 android:background="@drawable/round_button"
                 />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="This is me Bro"
-                android:textColor="#000"/>
+    <LinearLayout
+        android:id="@+id/footer"
+        app:layout_constraintTop_toBottomOf="@+id/ll5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="bottom">
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Profile" />
+
+        <Button
+            android:id="@+id/btnLogOut1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LogOut" />
+
+        <Button
+            android:id="@+id/btnLogOut2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LogOut" />
+
+        <Button
+            android:id="@+id/btnLogOut3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LogOut" />
 
     </LinearLayout>
 
