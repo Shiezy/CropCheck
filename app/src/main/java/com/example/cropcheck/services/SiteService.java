@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface SiteService {
 
-    @POST("add_site")
+    @POST("add_farm")
     @FormUrlEncoded
     Call<Site> addSite(@Field("site_name") String site_name, @Field("size") String size,
                        @Field("county") String county, @Field("division") String division,
