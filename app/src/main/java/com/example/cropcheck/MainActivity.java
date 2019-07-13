@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     String user_name;
 
     Button sites_button;
+    Button add_site_button;
 
 
     @Override
@@ -86,6 +87,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AllSitesActivity.class));
+            }
+        });
+
+        add_site_button = findViewById(R.id.add_site_button);
+
+        add_site_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddSiteActivity.class));
             }
         });
 
