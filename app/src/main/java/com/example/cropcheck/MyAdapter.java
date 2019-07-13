@@ -16,14 +16,8 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-//    public interface OnItemClickListener {
-//        void onItemClick(Site site);
-//    }
-
-    private String[] mDataset;
     private List<Site> sites = new ArrayList<>();
     private Context context;
-//    private final OnItemClickListener listener;
 
     public void updateData(List<Site> sites) {
 
