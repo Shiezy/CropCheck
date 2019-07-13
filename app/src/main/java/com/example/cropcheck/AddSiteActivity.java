@@ -52,13 +52,11 @@ public class AddSiteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Call<Site> call = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).addSite(site_name.getText().toString(),
                         size.getText().toString(), county.getText().toString(), division.getText().toString(), village.getText().toString(),9);
-                Toast.makeText(getApplicationContext(),site_name.getText().toString(), Toast.LENGTH_SHORT).show();
                 call.enqueue(new Callback<Site>() {
 
                     @Override
                     public void onResponse(Call<Site> call, Response<Site> response) {
                         if(response.isSuccessful()){
-                            Toast.makeText(AddSiteActivity.this, "Added Successfully!!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(AddSiteActivity.this, AllSitesActivity.class));
 
                         }else{
@@ -70,7 +68,6 @@ public class AddSiteActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<Site> call, Throwable t) {
                         Toast.makeText(getApplicationContext(),"failed!!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(AddSiteActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
