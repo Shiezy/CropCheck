@@ -77,6 +77,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             public void onClick(View v) {
                 Intent t = new Intent(context, SiteActivity.class);
                 t.putExtra("id",current.getId());
+                t.putExtra("site_name",current.getSite_name());
+                t.putExtra("division", current.getDivision());
+                t.putExtra("county", current.getCounty());
+                t.putExtra("village", current.getVillage());
                 v.getContext().startActivity(t);
 //                Toast.makeText(context, "You Clicked This Item" ,Toast.LENGTH_SHORT).show();
             }
