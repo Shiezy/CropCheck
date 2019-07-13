@@ -226,6 +226,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
             <Button
+                android:id="@+id/add_site_button"
                 android:width="50dp"
                 android:height="50dp"
                 android:layout_width="100dp"
