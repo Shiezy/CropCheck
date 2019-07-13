@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/site_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/twenty"
@@ -64,7 +64,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/twenty"
@@ -111,7 +111,7 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_add_site"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/twenty"

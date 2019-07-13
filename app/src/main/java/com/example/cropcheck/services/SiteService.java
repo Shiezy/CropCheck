@@ -14,11 +14,11 @@ import retrofit2.http.Path;
 
 public interface SiteService {
 
-    @POST("add_site")
+    @POST("add_farm")
     @FormUrlEncoded
     Call<Site> addSite(@Field("site_name") String site_name, @Field("size") String size,
                        @Field("county") String county, @Field("division") String division,
-                       @Field("village") String village);
+                       @Field("village") String village,  @Field("user_id") int user_id);
 
 
     @GET("get_all_farms/{user_id}")
