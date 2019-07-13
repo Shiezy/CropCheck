@@ -27,7 +27,7 @@ public class SiteActivity extends AppCompatActivity {
             site_id = (Integer) savedInstanceState.getSerializable("id");
         }
 
-        TextView text = findViewById(R.id.text);
-        text.setText("site_id");
+//        TextView text = findViewById(R.id.text);
+//        text.setText("site_id");
     }
 }
