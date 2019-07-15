@@ -65,85 +65,149 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/name_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="@dimen/ten"
                     android:layout_marginTop="@dimen/ten"
-                    android:text="Name :" />
+                    android:layout_weight="1"
+                    android:text="Name :"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/one"
+                    android:layout_marginTop="@dimen/ten"
                     android:layout_weight="1"
+                    android:text="TextView"
+                    android:textSize="20sp"
+                     />
+
+                <TextView
+                    android:id="@+id/county_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/ten"
                     android:layout_marginTop="@dimen/ten"
-                    android:text="TextView" />
+                    android:layout_weight="1"
+                    android:text="County :"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/county"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/one"
+                    android:layout_marginTop="@dimen/ten"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textSize="20sp"
+                    />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/site_location"
+                    android:id="@+id/division_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="@dimen/ten"
                     android:layout_marginTop="@dimen/ten"
-                    android:text="Location :" />
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Division :" />
 
                 <TextView
-                    android:id="@+id/site_county"
+                    android:id="@+id/division"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginLeft="@dimen/one"
                     android:layout_marginTop="@dimen/ten"
-                    android:text="county" />
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:text="division" />
 
                 <TextView
                     android:id="@+id/site_division"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="@dimen/ten"
                     android:layout_marginTop="@dimen/ten"
-                    android:text="division" />
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Village" />
 
                 <TextView
                     android:id="@+id/site_village"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/ten"
+                    android:layout_marginLeft="@dimen/one"
                     android:layout_marginTop="@dimen/ten"
-                    android:text="vilage" />
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:text="Village" />
             </LinearLayout>
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/site_policy_recycler_view"
-                android:layout_marginTop="@dimen/ten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/twenty"
+                android:layout_marginTop="@dimen/ten"
+
                 android:layout_marginRight="@dimen/twenty"
                 android:layout_marginBottom="@dimen/ten"
+                android:scrollbars="vertical" />
 
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/footer"
+            app:layout_constraintTop_toBottomOf="@+id/ll5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="bottom">
+
+
+
+            <Button
+                android:id="@+id/btnSeason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:background="@drawable/buttons"
+                android:text="Season" />
+
+        </LinearLayout>
+
+
+
     </android.support.v7.widget.CardView>
 
     <android.support.constraint.Guideline
