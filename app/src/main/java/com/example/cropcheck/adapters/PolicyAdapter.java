@@ -12,12 +12,13 @@ import com.example.cropcheck.R;
 import com.example.cropcheck.models.Policy;
 import com.example.cropcheck.models.Site;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder> {
 
-        private List<Policy> policies;
+        private List<Policy> policies = new ArrayList<>();
         Context context;
 
         public PolicyAdapter(Context context){
