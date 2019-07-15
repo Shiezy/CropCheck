@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button sites_button;
     Button add_site_button;
+    Button policies_button;
 
 
     @Override
@@ -96,6 +97,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, AddSiteActivity.class));
+            }
+        });
+
+        policies_button = findViewById(R.id.policies_button);
+
+        policies_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PoliciesActivity.class));
             }
         });
 
