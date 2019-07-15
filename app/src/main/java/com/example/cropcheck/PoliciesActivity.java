@@ -48,7 +48,7 @@ public class PoliciesActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            loadSites();
+                            loadPolicies();
                         }
                     });
 
@@ -66,9 +66,9 @@ public class PoliciesActivity extends AppCompatActivity {
         return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
     }
 
-    private void loadSites() {
-        Call<List<Policy>> sites = CoreUtils.getAuthRetrofitClient(getToken()).create(PolicyService.class).getAllPolicies();
-        sites.enqueue(new Callback<List<Policy>>() {
+    private void loadPolicies() {
+        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(PolicyService.class).getAllPolicies();
+        policies.enqueue(new Callback<List<Policy>>() {
             @Override
             public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
                 if (response.isSuccessful()) {

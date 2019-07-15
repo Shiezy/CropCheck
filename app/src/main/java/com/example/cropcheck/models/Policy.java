@@ -49,4 +49,12 @@ public class Policy {
     public void setTerms(String terms) {
         this.terms = terms;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
