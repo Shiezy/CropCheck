@@ -1,5 +1,6 @@
 package com.example.cropcheck.services;
 
+import com.example.cropcheck.models.Policy;
 import com.example.cropcheck.models.Site;
 
 import java.util.List;
@@ -23,4 +24,7 @@ public interface SiteService {
 
     @GET("get_all_farms/{user_id}")
     Call<List<Site>> getAllSites(@Path("user_id") int user_id);
+
+    @GET("get_farm_policies/{site_id}")
+    Call<List<Policy>> getSitePolicies(@Path("site_id") int site_id);
 }
