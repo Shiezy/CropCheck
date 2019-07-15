@@ -78,22 +78,6 @@ public class SiteActivity extends AppCompatActivity {
             }
         });
 
-        Call<Boolean> season = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).isOnSeason(site_id);
-        season.enqueue(new Callback<Boolean>() {
-            @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                if(response.isSuccessful()){
-                    Boolean status = response.body();
-                    Toast.makeText(getApplicationContext(),status.toString(),Toast.LENGTH_SHORT).show();
-
-                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-
-            }
-        });
     }
     public String getToken(){
         return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);

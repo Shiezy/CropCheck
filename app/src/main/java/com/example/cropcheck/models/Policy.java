@@ -11,7 +11,7 @@ public class Policy {
     @SerializedName("title")
     private String title;
     @SerializedName("risks")
-    private List<String>risks;
+    private List<Risk>risks;
     @SerializedName("premium")
     private float premium;
     @SerializedName("terms")
@@ -26,11 +26,11 @@ public class Policy {
         this.title = title;
     }
 
-    public List<String> getRisks() {
+    public List<Risk> getRisks() {
         return risks;
     }
 
-    public void setRisks(List<String> risks) {
+    public void setRisks(List<Risk> risks) {
         this.risks = risks;
     }
 
