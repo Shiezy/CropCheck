@@ -2,6 +2,7 @@ package com.example.cropcheck.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.example.cropcheck.R;
 import com.example.cropcheck.models.Policy;
 import com.example.cropcheck.models.Site;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,6 +78,10 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
             public void onClick(View v) {
                 Intent t = new Intent(context, ApplyPolicyActivity.class);
                 t.putExtra("id", policy.getId());
+                t.putExtra("premium", policy.getPremium());
+                t.putExtra("terms", policy.getTerms());
+                t.putExtra("title", policy.getTitle());
+                t.putExtra("risk", (Serializable) policy.getRisks());
                 v.getContext().startActivity(t);
             }
         });
