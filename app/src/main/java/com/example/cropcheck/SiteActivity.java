@@ -12,6 +12,7 @@ import com.example.cropcheck.adapters.PolicyAdapter;
 import com.example.cropcheck.models.Policy;
 import com.example.cropcheck.models.Site;
 import com.example.cropcheck.models.User;
+import com.example.cropcheck.services.SeasonService;
 import com.example.cropcheck.services.SiteService;
 import com.example.cropcheck.services.UserService;
 import com.example.cropcheck.utils.CoreUtils;
@@ -54,28 +55,51 @@ public class SiteActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-//        final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
-//        user.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                if(response.isSuccessful()){
-//                    user_id = response.body().getId();
-//
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            loadPolicies();
-//                        }
-//                    });
-//
-//                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//            }
-//        });
+        final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
+        user.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+                    user_id = response.body().getId();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadPolicies();
+                        }
+                    });
+
+                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+
+        Call<Boolean> season = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).isOnSeason(site_id);
+        season.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if(response.isSuccessful()){
+                    Boolean status = response.body();
+                    Toast.makeText(getApplicationContext(),status.toString(),Toast.LENGTH_SHORT).show();
+
+                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+
+            }
+        });
+    }
+    public String getToken(){
+        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
+    }
+
+    private void loadPolicies() {
         Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
         policies.enqueue(new Callback<List<Policy>>() {
             @Override
@@ -84,6 +108,8 @@ public class SiteActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+//                            Toast.makeText(getApplicationContext(),response.body().toString(),Toast.LENGTH_SHORT).show();
+
                             dataReceived(response.body());
                         }
                     });
@@ -95,35 +121,7 @@ public class SiteActivity extends AppCompatActivity {
 
             }
         });
-
-//        TextView text = findViewById(R.id.text);
-//        text.setText("site_id");
     }
-    public String getToken(){
-        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
-    }
-
-//    private void loadPolicies() {
-//        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
-//        policies.enqueue(new Callback<List<Policy>>() {
-//            @Override
-//            public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
-//                if(response.isSuccessful()){
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            dataReceived(response.body());
-//                        }
-//                    });
-//                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Policy>> call, Throwable t) {
-//
-//            }
-//        });
-//    }
     private void dataReceived(List<Policy> policies) {
         adapter.updateData(policies);}
 
