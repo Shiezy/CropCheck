@@ -134,14 +134,14 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/policiesbutton"
+                        android:id="@+id/policies"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:src="@mipmap/ic_round_transparent"
                         android:layout_marginBottom="8dp" />
 
                     <Button
-                        android:id="@+id/policies"
+                        android:id="@+id/policies_button"
                         android:text="Policies"
                         android:textSize="10sp"
                         android:textColor="#000"
