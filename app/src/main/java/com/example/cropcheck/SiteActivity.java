@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.cropcheck.adapters.PolicyAdapter;
 import com.example.cropcheck.models.Policy;
+import com.example.cropcheck.models.Season;
 import com.example.cropcheck.models.Site;
 import com.example.cropcheck.models.User;
 import com.example.cropcheck.services.SeasonService;
@@ -78,6 +79,22 @@ public class SiteActivity extends AppCompatActivity {
             }
         });
 
+        Call<Season> season = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).isOnSeason(site_id);
+        season.enqueue(new Callback<Season>() {
+            @Override
+            public void onResponse(Call<Season> call, Response<Season> response) {
+                if(response.isSuccessful()){
+                    Boolean status = response.body().getStatus();
+                    Toast.makeText(getApplicationContext(),status.toString(),Toast.LENGTH_SHORT).show();
+
+                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Season> call, Throwable t) {
+
+            }
+        });
     }
     public String getToken(){
         return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
