@@ -54,56 +54,28 @@ public class SiteActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-//        final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
-//        user.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                if(response.isSuccessful()){
-//                    user_id = response.body().getId();
-//
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            loadPolicies();
-//                        }
-//                    });
-//
-//                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//            }
-//        });
-        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
-        policies.enqueue(new Callback<List<Policy>>() {
+        final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
+        user.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
+                    user_id = response.body().getId();
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            dataReceived(response.body());
+                            loadPolicies();
                         }
                     });
+
                 }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<List<Policy>> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
 
             }
         });
-
-//        TextView text = findViewById(R.id.text);
-//        text.setText("site_id");
-    }
-    public String getToken(){
-        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
-    }
-
-//    private void loadPolicies() {
 //        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
 //        policies.enqueue(new Callback<List<Policy>>() {
 //            @Override
@@ -123,7 +95,37 @@ public class SiteActivity extends AppCompatActivity {
 //
 //            }
 //        });
-//    }
+
+//        TextView text = findViewById(R.id.text);
+//        text.setText("site_id");
+    }
+    public String getToken(){
+        return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
+    }
+
+    private void loadPolicies() {
+        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
+        policies.enqueue(new Callback<List<Policy>>() {
+            @Override
+            public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
+                if(response.isSuccessful()){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+//                            Toast.makeText(getApplicationContext(),response.body().toString(),Toast.LENGTH_SHORT).show();
+
+                            dataReceived(response.body());
+                        }
+                    });
+                }else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<Policy>> call, Throwable t) {
+
+            }
+        });
+    }
     private void dataReceived(List<Policy> policies) {
         adapter.updateData(policies);}
 

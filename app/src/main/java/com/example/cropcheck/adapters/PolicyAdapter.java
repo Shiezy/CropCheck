@@ -18,7 +18,7 @@ import java.util.List;
 
 public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder> {
 
-        private List<Policy> policies = new ArrayList<>();
+        private List<Policy> policies=new ArrayList<>();
         Context context;
 
         public PolicyAdapter(Context context){
