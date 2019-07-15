@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustResize">
-        <activity android:name=".SiteActivity"></activity>
+        <activity android:name=".PoliciesActivity"></activity>
+        <activity android:name=".SiteActivity" />
         <activity android:name=".AllSitesActivity" />
         <activity android:name=".AddSiteActivity" />
         <activity android:name=".RegisterActivity" />
