@@ -24,4 +24,7 @@ public interface PolicyService {
     @GET("get_farm_policies/{site_id}")
     Call<List<Policy>> getSitePolicies(@Path("site_id") int site_id);
 
+    @GET("get_policy/{policy_id}")
+    Call<Policy> getPolicy(@Path("policy_id") int policy_id);
+
 }
