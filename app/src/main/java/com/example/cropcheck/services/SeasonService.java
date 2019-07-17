@@ -10,6 +10,6 @@ public interface SeasonService {
 
 
 
-    @GET("isOn Season/site_id")
+    @GET("is_on_season/{site_id}")
     Call<Season> isOnSeason(@Path("site_id") int site_id);
 }

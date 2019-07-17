@@ -7,23 +7,30 @@ import java.util.Date;
 public class Season {
     @SerializedName("id")
     private int id;
-    @SerializedName("site_id")
+    @SerializedName("farm_id")
     private int site_id;
     @SerializedName("crop_id")
     private int crop_id;
-    @SerializedName("start_date")
-    private Date start_date;
-    @SerializedName("end_date")
-    private Date end_date;
+    @SerializedName("start_time")
+    private String start_date;
+    @SerializedName("end_time")
+    private String end_date;
     @SerializedName("status")
-    private Boolean status;
+    private int status;
 
+    public String getStart_date(){
+        return start_date;
+    }
+    public void setStart_date(String start_date){
+        this.start_date = start_date;
 
-    public Boolean getStatus() {
+    }
+
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }
