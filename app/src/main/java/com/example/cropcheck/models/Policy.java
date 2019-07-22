@@ -16,6 +16,8 @@ public class Policy {
     private float premium;
     @SerializedName("terms")
     private String terms;
+    @SerializedName("duration")
+    private String duration;
 
 
     public String getTitle() {
@@ -56,5 +58,13 @@ public class Policy {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 }

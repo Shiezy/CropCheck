@@ -35,7 +35,7 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
         this.policies = policies;
         notifyDataSetChanged();
     }
-        public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
             public TextView title;
             public ImageView direction_button;
@@ -81,7 +81,7 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
                 t.putExtra("premium", policy.getPremium());
                 t.putExtra("terms", policy.getTerms());
                 t.putExtra("title", policy.getTitle());
-                t.putExtra("risk", (Serializable) policy.getRisks());
+                t.putExtra("duration", policy.getDuration());
                 v.getContext().startActivity(t);
             }
         });
