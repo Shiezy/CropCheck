@@ -33,4 +33,36 @@ public class Season {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSite_id() {
+        return site_id;
+    }
+
+    public void setSite_id(int site_id) {
+        this.site_id = site_id;
+    }
+
+    public int getCrop_id() {
+        return crop_id;
+    }
+
+    public void setCrop_id(int crop_id) {
+        this.crop_id = crop_id;
+    }
+
+    public String getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
 }
