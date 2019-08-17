@@ -33,7 +33,6 @@
         android:layout_marginStart="18dp"
         android:layout_marginLeft="18dp"
         android:layout_marginTop="32dp"
-        android:text="Kamaru, kigumo, Kirinyaga"
         android:textColor="#FFF"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/imageView2"
@@ -108,17 +107,43 @@
             android:layout_gravity="bottom">
 
 
-
             <Button
                 android:id="@+id/btnSeason"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/ten"
+                android:padding="@dimen/one"
                 android:layout_marginLeft="@dimen/ten"
-                android:layout_marginBottom="@dimen/ten"
                 android:layout_marginTop="@dimen/ten"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
                 android:background="@drawable/buttons"
                 android:text="Season" />
+
+            <Button
+                android:id="@+id/btnPolicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/one"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:layout_weight="1"
+                android:background="@drawable/buttons"
+                android:text="Add Policy" />
+
+            <Button
+                android:id="@+id/images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ten"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_marginRight="@dimen/ten"
+                android:layout_marginBottom="@dimen/ten"
+                android:layout_weight="1"
+                android:background="@drawable/buttons"
+                android:text="images" />
+
 
         </LinearLayout>
 
