@@ -119,7 +119,7 @@ public class SiteActivity extends AppCompatActivity {
         siteImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SiteActivity.this, UploadImageActivity.class));
+                startActivity(new Intent(SiteActivity.this, ImageActivity.class));
             }
         });
 

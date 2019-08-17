@@ -8,6 +8,7 @@
     <com.example.cropcheck.adapters.SquareImageView
         android:id="@+id/siv"
         android:layout_width="match_parent"
+        android:src="@drawable/upload_icon"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>
