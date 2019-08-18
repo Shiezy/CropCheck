@@ -119,7 +119,12 @@ public class SiteActivity extends AppCompatActivity {
         siteImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SiteActivity.this, ImageActivity.class));
+                Intent intent = new Intent(SiteActivity.this, ImageActivity.class);
+                Bundle b = new Bundle();
+                b.putInt("farm_id", site_id); //Your id
+                b.putInt("season_id", season_id); //Your id
+                intent.putExtras(b); //Put your id to your next Intent
+                startActivity(intent);
             }
         });
 
