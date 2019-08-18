@@ -2,161 +2,331 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SiteActivity">
 
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="@drawable/bgheader"
+    <!--<View-->
+        <!--android:id="@+id/view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="240dp"-->
+        <!--android:background="@drawable/bgheader"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ll5"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="71dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="26dp"
-        android:src="@mipmap/ic_launcher_transparent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
-        android:id="@+id/site_dets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="32dp"
-        android:textColor="#FFF"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/imageView2"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
-        android:id="@+id/season_dets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="8dp"
-        android:text="Season in progress since"
-        android:textColor="#FFF"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/site_dets"/>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="26dp"
+            android:src="@mipmap/ic_launcher_transparent" />
 
-    <TextView
-        android:id="@+id/season_start_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="8dp"
-        android:text="Wed 25th June 2018"
-        android:textColor="#FFF"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@id/imageView2"
-        app:layout_constraintTop_toBottomOf="@id/season_dets" />
-
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        tools:layout_editor_absoluteX="8dp" >
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/season_dets"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp"
+            android:text="This are the season details"
+            android:textColor="#000"
+            android:textSize="20sp" />
 
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/site_policy_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/twenty"
-                android:layout_marginTop="@dimen/ten"
-
-                android:layout_marginRight="@dimen/twenty"
-                android:layout_marginBottom="@dimen/ten"
-                android:scrollbars="vertical" />
-
-
-        </LinearLayout>
         <LinearLayout
-            android:id="@+id/footer"
-            app:layout_constraintTop_toBottomOf="@+id/ll5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/season_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="25th June"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_height="fill_parent"
+                android:background="#000" />
+
+                <TextView
+                    android:id="@+id/season_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="25th June"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSeason"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginLeft="@dimen/ten"
+            android:layout_marginTop="@dimen/ten"
+            android:layout_marginRight="@dimen/ten"
+            android:layout_marginBottom="@dimen/ten"
+            android:background="@drawable/mybutton"
+            android:text="End Season" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="0.5dp"
+                    android:background="#000" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More Details"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#000"/>
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_height="0.5dp"
+                    android:background="#000" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll5"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@+id/ll1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footer">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    card_view:cardBackgroundColor="@color/primaryGreen"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardElevation="0dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginEnd="3dp"
+                        android:textSize="16sp"
+                        android:text="Location"/>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardElevation="0dp">
+
+                    <TextView
+                        android:id="@+id/site_dets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Kiambu, Juja, Weteithie"/>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        app:layout_constraintTop_toBottomOf="@+id/ll5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="4"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_gravity="bottom">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
 
-
-            <Button
-                android:id="@+id/btnSeason"
+            <ImageView
+                android:id="@+id/btnImages"
+                android:src="@mipmap/ic_camera"
+                android:layout_marginBottom="8dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/one"
-                android:layout_marginLeft="@dimen/ten"
-                android:layout_marginTop="@dimen/ten"
-                android:layout_marginRight="@dimen/ten"
-                android:layout_marginBottom="@dimen/ten"
-                android:background="@drawable/buttons"
-                android:text="Season" />
-
-            <Button
-                android:id="@+id/btnPolicy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/one"
-                android:layout_marginLeft="@dimen/ten"
-                android:layout_marginTop="@dimen/ten"
-                android:layout_marginRight="@dimen/ten"
-                android:layout_marginBottom="@dimen/ten"
-                android:layout_weight="1"
-                android:background="@drawable/buttons"
-                android:text="Add Policy" />
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/images"
+                android:text="Upload Photo"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/ten"
-                android:layout_marginTop="@dimen/ten"
-                android:layout_marginRight="@dimen/ten"
-                android:layout_marginBottom="@dimen/ten"
-                android:layout_weight="1"
-                android:background="@drawable/buttons"
-                android:text="images" />
+                android:layout_height="wrap_content" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnImagesView"
+                android:src="@mipmap/ic_images"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/myImages"
+                android:text="View Images"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/applyPolicies"
+                android:src="@mipmap/ic_covers"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnPolicy"
+                android:text="Apply Policy"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/myApplications"
+                android:src="@mipmap/ic_applied_policies"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="Insurance Cover"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
 
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

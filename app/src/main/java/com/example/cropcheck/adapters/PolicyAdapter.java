@@ -25,6 +25,7 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
 
         private List<Policy> policies = new ArrayList<>();
         private Context context;
+        public static Integer site_id;
 
         public PolicyAdapter(Context context){
             this.context = context;
@@ -82,6 +83,7 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
                 t.putExtra("terms", policy.getTerms());
                 t.putExtra("title", policy.getTitle());
                 t.putExtra("duration", policy.getDuration());
+                t.putExtra("site_id", site_id);
                 v.getContext().startActivity(t);
             }
         });

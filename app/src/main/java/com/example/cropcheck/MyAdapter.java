@@ -34,12 +34,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public TextView village;
         public TextView county;
         public TextView division;
+        public TextView tvCounter;
         public MyViewHolder(View v) {
             super(v);
             site_name = v.findViewById(R.id.site_name);
             village = v.findViewById(R.id.village);
             county = v.findViewById(R.id.county);
             division = v.findViewById(R.id.division);
+            tvCounter = v.findViewById(R.id.tvCounter);
         }
     }
 
@@ -66,6 +68,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // - replace the contents of the view with that element
 
         final Site current = sites.get(position);
+
+//        holder.tvCounter.setText(position);
 
         holder.site_name.setText(sites.get(position).getSite_name());
         holder.village.setText(sites.get(position).getVillage());

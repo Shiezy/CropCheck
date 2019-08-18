@@ -40,6 +40,8 @@ public class SiteActivity extends AppCompatActivity {
     Integer season_id;
     RecyclerView recyclerView;
 
+    Button btnPolicy;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +124,16 @@ public class SiteActivity extends AppCompatActivity {
                 startActivity(new Intent(SiteActivity.this, UploadImageActivity.class));
             }
         });
+
+        btnPolicy = findViewById(R.id.btnPolicy);
+        btnPolicy.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SiteActivity.this, PoliciesActivity.class);
+                myIntent.putExtra("site_id",site_id);
+                startActivity(myIntent);
+            }
+        }));
 
     }
     public String getToken(){

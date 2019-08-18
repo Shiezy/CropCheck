@@ -321,6 +321,7 @@
                 android:id="@+id/btnAddSite3"
                 android:src="@mipmap/ic_add_site"
                 android:layout_width="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_height="wrap_content" />
 
             <Button
@@ -347,6 +348,7 @@
             <ImageView
                 android:id="@+id/btnLogOut3"
                 android:src="@mipmap/ic_logout"
+                android:layout_marginBottom="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
