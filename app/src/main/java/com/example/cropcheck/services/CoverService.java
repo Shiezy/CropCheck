@@ -16,7 +16,7 @@ public interface CoverService {
     @GET("get_farm_covers/{site_id}")
     Call<List<Cover>> getSiteCovers(@Path("site_id") int site_id);
 
-    @GET("get_policy/{policy_id}")
-    Call<Cover> getCover(@Path("policy_id") int policy_id);
+    @GET("get_cover/{cover_id}")
+    Call<Cover> getCover(@Path("cover_id") int cover_id);
 
 }
