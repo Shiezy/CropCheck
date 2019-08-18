@@ -11,10 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cropcheck.adapters.RiskAdapter;
-import com.example.cropcheck.models.PolicyApplication;
+import com.example.cropcheck.models.Claim;
+import com.example.cropcheck.models.Policy;
 import com.example.cropcheck.models.Risk;
 import com.example.cropcheck.models.User;
-import com.example.cropcheck.services.PolicyApplicationService;
+import com.example.cropcheck.services.ClaimService;
+import com.example.cropcheck.services.PolicyService;
 import com.example.cropcheck.services.RiskService;
 import com.example.cropcheck.services.UserService;
 import com.example.cropcheck.utils.CoreUtils;
@@ -25,10 +27,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ApplyPolicyActivity extends AppCompatActivity {
+public class AppliedPoliciesActivity extends AppCompatActivity {
+
 
     Integer policy_id;
     Integer user_id;
+    Integer cover_id;
+    Integer status;
+    String expiry_date;
     String title;
     String terms;
     String premium;
@@ -37,9 +43,10 @@ public class ApplyPolicyActivity extends AppCompatActivity {
     TextView premium_amount;
     TextView policy_duration;
     TextView policy_title;
+    TextView expiry;
     Integer site_id;
 
-    Button applyPolicyButton;
+    Button claimButton;
 
     RiskAdapter myAdapter;
     RecyclerView recyclerView;
@@ -47,35 +54,26 @@ public class ApplyPolicyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_apply_policy);
+        setContentView(R.layout.activity_applied_policies);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
-                policy_id = null;
+                cover_id = null;
                 Toast.makeText(getApplicationContext(), "SITE ID is null", Toast.LENGTH_SHORT).show();
             } else {
-                policy_id = extras.getInt("id");
-                premium = extras.getString("premium");
-                title = extras.getString("title");
-                terms = extras.getString("terms");
-                duration = extras.getString("duration");
-                site_id = extras.getInt("site_id");
+                cover_id = extras.getInt("id");
+                policy_id = extras.getInt("policy_id");
+                user_id = extras.getInt("user_id");
+                status = extras.getInt("status");
+                expiry_date = extras.getString("expiry_date");
             }
         } else {
             policy_id = (Integer) savedInstanceState.getSerializable("id");
         }
 
-        premium_amount = findViewById(R.id.premium_amount);
-        policy_duration = findViewById(R.id.policy_duration);
-        policy_title = findViewById(R.id.policy_title);
-
-        premium = "Ksh. " + premium;
-        duration = duration + " months";
-
-        premium_amount.setText(premium);
-        policy_duration.setText(duration);
-        policy_title.setText(title);
+        expiry = findViewById(R.id.policy_expiry);
+        expiry.setText(expiry_date);
 
         recyclerView = findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -95,6 +93,7 @@ public class ApplyPolicyActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             loadRisks(policy_id);
+                            loadPolicy(policy_id);
                         }
                     });
 
@@ -108,29 +107,33 @@ public class ApplyPolicyActivity extends AppCompatActivity {
             }
         });
 
-        applyPolicyButton = findViewById(R.id.applyButton);
+        claimButton = findViewById(R.id.claimButton);
 
-        applyPolicyButton.setOnClickListener(new View.OnClickListener() {
+        claimButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<PolicyApplication> call = CoreUtils.getAuthRetrofitClient(getToken()).create(PolicyApplicationService.class).addPolicyApplication(user_id, policy_id, site_id);
-                call.enqueue(new Callback<PolicyApplication>() {
+                Call<Claim> call = CoreUtils.getAuthRetrofitClient(getToken()).create(ClaimService.class).makeClaim(cover_id);
+                call.enqueue(new Callback<Claim>() {
 
                     @Override
-                    public void onResponse(Call<PolicyApplication> call, Response<PolicyApplication> response) {
+                    public void onResponse(Call<Claim> call, Response<Claim> response) {
                         if (response.isSuccessful()) {
-//                            startActivity(new Intent(AddSiteActivity.this, AllSitesActivity.class));
-                            Toast.makeText(getApplicationContext(), "Successful!", Toast.LENGTH_SHORT).show();
+                            user_id = response.body().getId();
 
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "Successful!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
-                        }
+                        } else
+                            Toast.makeText(getApplicationContext(), response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
-                    public void onFailure(Call<PolicyApplication> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "failed!!", Toast.LENGTH_SHORT).show();
+                    public void onFailure(Call<Claim> call, Throwable t) {
+
                     }
                 });
             }
@@ -155,6 +158,40 @@ public class ApplyPolicyActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Risk>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void loadPolicy(Integer policy_id) {
+        Call<Policy> policy = CoreUtils.getAuthRetrofitClient(getToken()).create(PolicyService.class).getPolicy(policy_id);
+        policy.enqueue(new Callback<Policy>() {
+            @Override
+            public void onResponse(Call<Policy> call, Response<Policy> response) {
+                if (response.isSuccessful()) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            premium_amount = findViewById(R.id.premium_amount);
+                            policy_duration = findViewById(R.id.policy_duration);
+                            policy_title = findViewById(R.id.policy_title);
+
+                            premium = "Ksh. " + premium;
+                            duration = duration + " months";
+
+                            premium_amount.setText(premium);
+                            policy_duration.setText(duration);
+                            policy_title.setText(title);
+
+                        }
+                    });
+                } else
+                    Toast.makeText(getApplicationContext(), response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Policy> call, Throwable t) {
 
             }
         });

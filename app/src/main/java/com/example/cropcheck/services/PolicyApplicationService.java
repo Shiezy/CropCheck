@@ -11,6 +11,6 @@ public interface PolicyApplicationService {
 
     @POST("policy_application")
     @FormUrlEncoded
-    Call<PolicyApplication> addPolicyApplication(@Field("user_id") Integer user_id, @Field("policy_id") Integer policy_id);
+    Call<PolicyApplication> addPolicyApplication(@Field("user_id") Integer user_id, @Field("policy_id") Integer policy_id, @Field("farm_id") Integer site_id);
 
 }

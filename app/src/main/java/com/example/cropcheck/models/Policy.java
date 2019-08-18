@@ -36,8 +36,8 @@ public class Policy {
         this.risks = risks;
     }
 
-    public float getPremium() {
-        return premium;
+    public String getPremium() {
+        return String.valueOf(Math.round(premium*100)/100D);
     }
 
     public void setPremium(float premium) {

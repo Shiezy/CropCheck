@@ -248,31 +248,123 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:weightSum="4"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="bottom">
 
-        <Button
-            android:id="@+id/btnUserProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User Profile" />
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btnLogOut1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LogOut" />
+            <ImageView
+                android:id="@+id/btnUserProfile3"
+                android:src="@mipmap/ic_user"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btnLogOut2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LogOut" />
+            <Button
+                android:text="My Profile"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btnLogOut3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LogOut" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnAppliedPolicies3"
+                android:src="@mipmap/ic_applied_policies"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/myPolicies"
+                android:text="My Policies"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnAddSite3"
+                android:src="@mipmap/ic_add_site"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="Add Site"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnLogOut3"
+                android:src="@mipmap/ic_logout"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:text="Log Out"
+                android:textSize="8sp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:background="@drawable/cardlayout"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
