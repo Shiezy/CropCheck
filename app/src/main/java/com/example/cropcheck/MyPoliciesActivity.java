@@ -38,7 +38,7 @@ public class MyPoliciesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.site_policy_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        this.adapter = new CoversAdapter(getApplicationContext());
+        adapter = new CoversAdapter(getApplicationContext());
         recyclerView.setAdapter(adapter);
 
         if (savedInstanceState == null) {

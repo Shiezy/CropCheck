@@ -38,8 +38,6 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
         public ImageView nextButton;
 
         public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
             super(itemView);
             nextButton = (ImageView) itemView.findViewById(R.id.nextButton);
             coverTitle = (TextView) itemView.findViewById(R.id.coverTitle);
@@ -56,8 +54,7 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
         View contactView = inflater.inflate(R.layout.my_policy_row, viewGroup, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new ViewHolder(contactView);
     }
 
     @Override
@@ -66,8 +63,8 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
         final Cover cover = covers.get(i);
 
         // Set item views based on your views and data model
-//        TextView textView = viewHolder.coverTitle;
-//        textView.setText(cover.getTitle());
+        TextView textView = viewHolder.coverTitle;
+        textView.setText(cover.getPolicy().getTitle());
 
         viewHolder.nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +75,7 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
                 t.putExtra("user_id", cover.getUser_id());
                 t.putExtra("farm_id", cover.getFarm_id());
                 t.putExtra("expiry_date", cover.getExpiry_date());
+                t.putExtra("start_date", cover.getStart_date());
                 t.putExtra("status", cover.getStatus());
                 v.getContext().startActivity(t);
             }
