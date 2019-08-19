@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustResize">
-        <activity android:name=".AppliedPoliciesActivity"></activity>
+        <activity android:name=".ClaimCoverActivity"></activity>
+        <activity android:name=".AppliedPoliciesActivity" />
         <activity android:name=".MyPoliciesActivity" />
         <activity android:name=".UploadImageActivity" />
         <activity android:name=".ImageActivity" />

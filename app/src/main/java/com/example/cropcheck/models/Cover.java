@@ -13,6 +13,9 @@ public class Cover {
     @SerializedName("policy_id")
     public Integer policy_id;
 
+    @SerializedName("farm_id")
+    public Integer farm_id;
+
     @SerializedName("user_id")
     public Integer user_id;
 
@@ -61,5 +64,13 @@ public class Cover {
 
     public void setExpiry_date(String expiry_date) {
         this.expiry_date = expiry_date;
+    }
+
+    public Integer getFarm_id() {
+        return farm_id;
+    }
+
+    public void setFarm_id(Integer farm_id) {
+        this.farm_id = farm_id;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.cropcheck.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cropcheck.ClaimCoverActivity;
 import com.example.cropcheck.R;
 import com.example.cropcheck.models.Cover;
 
@@ -64,19 +66,19 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
         final Cover cover = covers.get(i);
 
         // Set item views based on your views and data model
-        TextView textView = viewHolder.title;
-        textView.setText(cover.getTitle());
+//        TextView textView = viewHolder.coverTitle;
+//        textView.setText(cover.getTitle());
 
-        viewHolder.direction_button.setOnClickListener(new View.OnClickListener() {
+        viewHolder.nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent t = new Intent(context, ApplyPolicyActivity.class);
-                t.putExtra("id", policy.getId());
-                t.putExtra("premium", policy.getPremium());
-                t.putExtra("terms", policy.getTerms());
-                t.putExtra("title", policy.getTitle());
-                t.putExtra("duration", policy.getDuration());
-                t.putExtra("site_id", site_id);
+                Intent t = new Intent(context, ClaimCoverActivity.class);
+                t.putExtra("cover_id", cover.getId());
+                t.putExtra("policy_id", cover.getPolicy_id());
+                t.putExtra("user_id", cover.getUser_id());
+                t.putExtra("farm_id", cover.getFarm_id());
+                t.putExtra("expiry_date", cover.getExpiry_date());
+                t.putExtra("status", cover.getStatus());
                 v.getContext().startActivity(t);
             }
         });

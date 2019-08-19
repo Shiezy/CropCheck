@@ -7,9 +7,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.example.cropcheck.adapters.CoversAdapter;
 import com.example.cropcheck.adapters.PolicyAdapter;
+import com.example.cropcheck.models.Cover;
 import com.example.cropcheck.models.Policy;
 import com.example.cropcheck.models.User;
+import com.example.cropcheck.services.CoverService;
 import com.example.cropcheck.services.PolicyService;
 import com.example.cropcheck.services.UserService;
 import com.example.cropcheck.utils.CoreUtils;
@@ -22,11 +25,10 @@ import retrofit2.Response;
 
 public class MyPoliciesActivity extends AppCompatActivity {
 
-    PolicyAdapter myAdapter;
     Integer user_id;
     Integer site_id;
     RecyclerView recyclerView;
-    PolicyAdapter adapter;
+    CoversAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +38,8 @@ public class MyPoliciesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.site_policy_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        this.adapter = new PolicyAdapter(getApplicationContext());
+        this.adapter = new CoversAdapter(getApplicationContext());
         recyclerView.setAdapter(adapter);
-
-//        recyclerView = findViewById(R.id.my_recycler_view);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        myAdapter = new PolicyAdapter(getApplicationContext());
-//
-//        recyclerView.setAdapter(myAdapter);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -53,7 +48,7 @@ public class MyPoliciesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "SITE ID is null" , Toast.LENGTH_SHORT).show();
             } else {
                 site_id = extras.getInt("site_id");
-                PolicyAdapter.site_id = site_id;
+                CoversAdapter.site_id = site_id;
                 Toast.makeText(getApplicationContext(), ""+site_id , Toast.LENGTH_SHORT).show();
             }
         } else {
@@ -89,10 +84,10 @@ public class MyPoliciesActivity extends AppCompatActivity {
     }
 
     private void loadPolicies() {
-        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(PolicyService.class).getAllPolicies();
-        policies.enqueue(new Callback<List<Policy>>() {
+        Call<List<Cover>> covers = CoreUtils.getAuthRetrofitClient(getToken()).create(CoverService.class).getSiteCovers(site_id);
+        covers.enqueue(new Callback<List<Cover>>() {
             @Override
-            public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
+            public void onResponse(Call<List<Cover>> call, final Response<List<Cover>> response) {
                 if (response.isSuccessful()) {
                     runOnUiThread(new Runnable() {
                         @Override
@@ -105,13 +100,13 @@ public class MyPoliciesActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Policy>> call, Throwable t) {
+            public void onFailure(Call<List<Cover>> call, Throwable t) {
 
             }
         });
     }
 
-    private void dataReceived(List<Policy> policies) {
-        myAdapter.updateData(policies);
+    private void dataReceived(List<Cover> covers) {
+        adapter.updateData(covers);
     }
 }
