@@ -25,6 +25,11 @@ public class Cover {
     @SerializedName("expiry_date")
     public String expiry_date;
 
+    @SerializedName("start_date")
+    public String start_date;
+
+    @SerializedName("policy")
+    public Policy policy;
 
     public int getId() {
         return id;
@@ -66,11 +71,27 @@ public class Cover {
         this.expiry_date = expiry_date;
     }
 
+    public String getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
+    }
+
     public Integer getFarm_id() {
         return farm_id;
     }
 
     public void setFarm_id(Integer farm_id) {
         this.farm_id = farm_id;
+    }
+
+    public Policy getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(Policy policy) {
+        this.policy = policy;
     }
 }
