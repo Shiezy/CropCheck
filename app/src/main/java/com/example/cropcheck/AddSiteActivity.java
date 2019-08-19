@@ -22,6 +22,8 @@ import retrofit2.Response;
 
 public class AddSiteActivity extends AppCompatActivity {
 
+    Integer user_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class AddSiteActivity extends AppCompatActivity {
          user.enqueue(new Callback<User>() {
              @Override
              public void onResponse(Call<User> call, Response<User> response) {
-
+                 user_id = response.body().getId();
              }
 
              @Override
@@ -51,7 +53,7 @@ public class AddSiteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Call<Site> call = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).addSite(site_name.getText().toString(),
-                        size.getText().toString(), county.getText().toString(), division.getText().toString(), village.getText().toString(),9);
+                        size.getText().toString(), county.getText().toString(), division.getText().toString(), village.getText().toString(),user_id);
                 call.enqueue(new Callback<Site>() {
 
                     @Override
