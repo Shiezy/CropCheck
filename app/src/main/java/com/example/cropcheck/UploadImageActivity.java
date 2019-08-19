@@ -38,8 +38,10 @@ public class UploadImageActivity extends AppCompatActivity {
     String imgDecodableString;
     ProgressDialog progressDialog;
     File file;
-    int farm_id = 1;
-    int season_id = 2;
+    int farm_id;
+    int season_id;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
 
 
     @Override
@@ -48,6 +50,17 @@ public class UploadImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload_image);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading...");
+        Bundle b = getIntent().getExtras();
+        if(b != null) {
+            farm_id = b.getInt("farm_id");
+            season_id = b.getInt("season_id");
+        } else {
+            farm_id =1;
+            season_id = 1;
+        }
+
+        String value = String.valueOf(season_id);
+        Toast.makeText(getApplicationContext(),value,Toast.LENGTH_SHORT).show();
 
         Permissions.check(this/*context*/, Manifest.permission.READ_EXTERNAL_STORAGE, null, new PermissionHandler() {
             @Override
@@ -55,6 +68,11 @@ public class UploadImageActivity extends AppCompatActivity {
                 // do your task.
             }
         });
+
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        // Start the Intent
+        startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
 
         Button uploadImage  = (Button) findViewById(R.id.buttonUploadImage);
         Button pickImage = (Button) findViewById(R.id.buttonPickImage);
@@ -75,6 +93,7 @@ public class UploadImageActivity extends AppCompatActivity {
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 uploadImage();
             }
         });
@@ -120,6 +139,13 @@ public class UploadImageActivity extends AppCompatActivity {
 
     }
 
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
 
     private String getRealPathFromURIPath(Uri contentURI, Activity activity) {
         Cursor cursor = activity.getContentResolver().query(contentURI, null, null, null, null);
@@ -138,6 +164,8 @@ public class UploadImageActivity extends AppCompatActivity {
             fileToUpload=null;
 
         }else{
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.show();
             RequestBody mFile=RequestBody.create(MediaType.parse("image/*"), file);
             season_id =1;
             farm_id = 2;
@@ -153,6 +181,7 @@ public class UploadImageActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                progressDialog.dismiss();
                                 Toast.makeText(getApplicationContext(),"successfully Uploaded",Toast.LENGTH_SHORT).show();
 
                             }
