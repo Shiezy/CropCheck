@@ -63,8 +63,7 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
         final Cover cover = covers.get(i);
 
         // Set item views based on your views and data model
-        TextView textView = viewHolder.coverTitle;
-        textView.setText(cover.getPolicy().getTitle());
+        viewHolder.coverTitle.setText(cover.getPolicy().getTitle());
 
         viewHolder.nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
