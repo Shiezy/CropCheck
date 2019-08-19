@@ -174,67 +174,85 @@ public class SiteActivity extends AppCompatActivity {
         final TextView season_start_date = (TextView) findViewById(R.id.season_start_date);
         final Button btnSetSeason = (Button) findViewById(R.id.btnSeason);
 
+        Call<Integer> isOnSeason = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).isOnSeason(site_id);
+           isOnSeason.enqueue(new Callback<Integer>() {
+               @Override
+               public void onResponse(Call<Integer> call,final Response<Integer> response) {
 
-        Call<Season> season = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).isOnSeason(site_id);
-        season.enqueue(new Callback<Season>() {
-            @Override
-            public void onResponse(Call<Season> call, final Response<Season> response) {
-                if(response.isSuccessful()){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            int status = response.body().getStatus();
-                            String startDate = response.body().getStart_date();
-                            season_id = response.body().getId();
-//                            season_id = 2;
+                   if (response.isSuccessful()) {
+                       runOnUiThread(new Runnable() {
+                           @Override
+                           public void run() {
+                               int checker = response.body();
+                               if(checker == 0) {
+                                   season_dets.setText("Not in Season");
+                                   btnSetSeason.setText("Start Season");
+                                   season_start_date.setVisibility(View.GONE);
+                               } else if (checker == 1){
 
-                            if(status == 1){
-                                season_dets.setText("Has been in season since");
-                                season_start_date.setText(startDate);
-                                btnSetSeason.setText("End Season");
+                                   Call<Season> season = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).getSeason(site_id);
+                                   season.enqueue(new Callback<Season>() {
+                                       @Override
+                                       public void onResponse(Call<Season> call, final Response<Season> response) {
+                                           if(response.isSuccessful()){
+                                               runOnUiThread(new Runnable() {
+                                                   @Override
+                                                   public void run() {
+                                                       int status = response.body().getStatus();
+                                                       String startDate = response.body().getStart_date();
+                                                       season_id = response.body().getId();
+                                                       season_dets.setText("Has been in season since");
+                                                       season_start_date.setText(startDate);
+                                                       btnSetSeason.setText("End Season");
 
-                            } else {
-                                season_dets.setText("Not in Season");
-                                btnSetSeason.setText("Start Season");
-                                season_start_date.setVisibility(View.GONE);
-                            }
+                                                   }
+                                               });
+
+                                           }
+                                           else  {
+                                               runOnUiThread(new Runnable() {
+
+                                                   @Override
+                                                   public void run() {
+
+                                                       season_dets.setText("monica");
+
+                                                   }
+                                               });
+
+                                           }
+                                       }
+
+                                       @Override
+                                       public void onFailure(Call<Season> call, final Throwable t) {
+                                           runOnUiThread(new Runnable() {
+
+                                               @Override
+                                               public void run() {
+                                                   Log.d("TEMP_TAG", t.getMessage());
+
+                                                   season_dets.setText("magda");
+
+                                               }
+                                           });
+                                       }
+                                   });
+                               }
+                           }
+                       });
+                   }
+
+
+               }
+
+               @Override
+               public void onFailure(Call<Integer> call, Throwable t) {
+
+               }
+           });
 
 
 
-                        }
-                    });
-
-
-
-                }
-                else  {
-                    runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-
-                            season_dets.setText("monica");
-
-                        }
-                    });
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Season> call, final Throwable t) {
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        Log.d("TEMP_TAG", t.getMessage());
-
-                        season_dets.setText("magda");
-
-                    }
-                });
-            }
-        });
     }
 //    private void dataReceived(List<Policy> policies) {
 //        adapter.updateData(policies);}
