@@ -36,20 +36,19 @@ public class SiteActivity extends AppCompatActivity {
     String county;
     String site_name;
     Integer user_id;
-    PolicyAdapter adapter;
     Integer season_id;
-    RecyclerView recyclerView;
 
     Button btnPolicy;
+    Button coversButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site);
-        final Button btnSetSeason = (Button) findViewById(R.id.btnSeason);
-        final TextView siteDetails = (TextView) findViewById(R.id.site_dets);
-        final Button siteImages = (Button) findViewById(R.id.images);
+        final Button btnSetSeason = findViewById(R.id.btnSeason);
+        final TextView siteDetails = findViewById(R.id.site_dets);
+        final Button siteImages = findViewById(R.id.images);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -72,13 +71,6 @@ public class SiteActivity extends AppCompatActivity {
         }
 
 
-        recyclerView = findViewById(R.id.site_policy_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        this.adapter = new PolicyAdapter(getApplicationContext());
-        recyclerView.setAdapter(adapter);
-
-
         final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
         user.enqueue(new Callback<User>() {
             @Override
@@ -91,7 +83,7 @@ public class SiteActivity extends AppCompatActivity {
                         public void run() {
                             siteDetails.setText(site_name + " " + village +" "+county);
                             loadSeasonDets();
-                            loadPolicies();
+//                            loadPolicies();
 
                         }
                     });
@@ -135,33 +127,43 @@ public class SiteActivity extends AppCompatActivity {
             }
         }));
 
+        coversButton = findViewById(R.id.coversButton);
+        coversButton.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SiteActivity.this, MyPoliciesActivity.class);
+                myIntent.putExtra("site_id",site_id);
+                startActivity(myIntent);
+            }
+        }));
+
     }
     public String getToken(){
         return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
     }
 
-    private void loadPolicies() {
-        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
-        policies.enqueue(new Callback<List<Policy>>() {
-            @Override
-            public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
-                if(response.isSuccessful()){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            dataReceived(response.body());
-                        }
-                    });
-                }
-//                else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<List<Policy>> call, Throwable t) {
-
-            }
-        });
-    }
+//    private void loadPolicies() {
+//        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
+//        policies.enqueue(new Callback<List<Policy>>() {
+//            @Override
+//            public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
+//                if(response.isSuccessful()){
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            dataReceived(response.body());
+//                        }
+//                    });
+//                }
+////                else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Policy>> call, Throwable t) {
+//
+//            }
+//        });
+//    }
     private void loadSeasonDets(){
         final TextView season_dets = (TextView) findViewById(R.id.season_dets);
         final TextView season_start_date = (TextView) findViewById(R.id.season_start_date);
@@ -229,8 +231,8 @@ public class SiteActivity extends AppCompatActivity {
             }
         });
     }
-    private void dataReceived(List<Policy> policies) {
-        adapter.updateData(policies);}
+//    private void dataReceived(List<Policy> policies) {
+//        adapter.updateData(policies);}
 
     private void endSeason(){
         Call<Season> seasonCall = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).endSeason(season_id);

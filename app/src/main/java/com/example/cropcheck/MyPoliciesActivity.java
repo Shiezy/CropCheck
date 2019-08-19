@@ -24,19 +24,41 @@ public class MyPoliciesActivity extends AppCompatActivity {
 
     PolicyAdapter myAdapter;
     Integer user_id;
+    Integer site_id;
     RecyclerView recyclerView;
+    PolicyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_policies);
 
-        recyclerView = findViewById(R.id.my_recycler_view);
+        recyclerView = findViewById(R.id.site_policy_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        myAdapter = new PolicyAdapter(getApplicationContext());
+        this.adapter = new PolicyAdapter(getApplicationContext());
+        recyclerView.setAdapter(adapter);
 
-        recyclerView.setAdapter(myAdapter);
+//        recyclerView = findViewById(R.id.my_recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        myAdapter = new PolicyAdapter(getApplicationContext());
+//
+//        recyclerView.setAdapter(myAdapter);
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                site_id = null;
+                Toast.makeText(getApplicationContext(), "SITE ID is null" , Toast.LENGTH_SHORT).show();
+            } else {
+                site_id = extras.getInt("site_id");
+                PolicyAdapter.site_id = site_id;
+                Toast.makeText(getApplicationContext(), ""+site_id , Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            site_id = (Integer) savedInstanceState.getSerializable("site_id");
+        }
 
         final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
         user.enqueue(new Callback<User>() {
