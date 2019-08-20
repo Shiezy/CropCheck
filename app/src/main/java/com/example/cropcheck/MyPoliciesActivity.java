@@ -58,13 +58,14 @@ public class MyPoliciesActivity extends AppCompatActivity {
         final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
         user.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<User> call,final Response<User> response) {
                 if(response.isSuccessful()){
-                    user_id = response.body().getId();
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            user_id = response.body().getId();
+
                             loadPolicies();
                         }
                     });
