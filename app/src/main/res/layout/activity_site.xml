@@ -325,7 +325,7 @@
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/myImages"
+                android:id="@+id/diagnosis"
                 android:text="Diagnose"
                 android:textSize="8sp"
                 android:textColor="#000"
