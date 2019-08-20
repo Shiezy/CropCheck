@@ -76,6 +76,8 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
                 t.putExtra("expiry_date", cover.getExpiry_date());
                 t.putExtra("start_date", cover.getStart_date());
                 t.putExtra("status", cover.getStatus());
+                t.putExtra("title", cover.getPolicy().getTitle());
+                t.putExtra("premium", cover.getPolicy().getPremium());
                 v.getContext().startActivity(t);
             }
         });
@@ -83,6 +85,6 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return covers.size();
     }
 }

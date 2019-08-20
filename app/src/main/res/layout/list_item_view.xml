@@ -4,11 +4,21 @@
     <!--android:layout_height="match_parent"-->
     <!--xmlns:app="http://schemas.android.com/apk/res-auto">-->
 
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:focusable="true"
+    card_view:cardBackgroundColor="@android:color/primary_text_dark"
+    card_view:cardElevation="15dp">
+
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingStart="16dp"
@@ -23,161 +33,38 @@
 
         <TextView
             android:id="@+id/tvCounter"
-            android:layout_width="32dp"
-            android:layout_height="32dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
-            android:id="@+id/ll2"
+            android:text="1."
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="#000"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:layout_height="wrap_content" />
 
-
-            <TextView
+        <TextView
                 android:id="@+id/site_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="0dp"
                 android:textStyle="bold"
-                android:text="CropCheck User"
+                android:text="CropCheck User,"
                 android:textColor="#000"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/tvCounter"
                 app:layout_constraintTop_toTopOf="parent"/>
-
-            <LinearLayout
+        <TextView
+                android:id="@+id/county"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/village_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold|italic"
-                    android:text="Village:"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="#000"
-                    android:textSize="11sp"
-                    app:layout_constraintStart_toEndOf="@id/tvCounter"
-                    app:layout_constraintTop_toBottomOf="@id/site_name"/>
-
-                <TextView
-                    android:id="@+id/village"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="italic"
-                    android:text="33716077"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="#000"
-                    android:textSize="11sp"
-                    app:layout_constraintStart_toEndOf="@id/tvCounter"
-                    app:layout_constraintTop_toBottomOf="@id/site_name"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/ll4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/county_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="0dp"
-                    android:textStyle="bold|italic"
-                    android:text="County :"
-                    android:textColor="#000"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@id/site_name"
-                    app:layout_constraintTop_toTopOf="@id/site_name"/>
-
-                <TextView
-                    android:id="@+id/county"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="0dp"
-                    android:textStyle="italic"
-                    android:text="CropCheck User"
-                    android:textColor="#000"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@id/site_name"
-                    app:layout_constraintTop_toTopOf="@id/site_name"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/division_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold|italic"
-                    android:text="Division :"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="#000"
-                    android:textSize="11sp"
-                    app:layout_constraintStart_toEndOf="@id/village"
-                    app:layout_constraintTop_toBottomOf="@id/county"/>
-
-                <TextView
-                    android:id="@+id/division"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="italic"
-                    android:text="33716077"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="#000"
-                    android:textSize="11sp"
-                    app:layout_constraintStart_toEndOf="@id/village"
-                    app:layout_constraintTop_toBottomOf="@id/county"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:textStyle="italic"
+                android:text="CropCheck User"
+                android:textColor="#000"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent" />
 
 </LinearLayout>
 
+</android.support.v7.widget.CardView>
 <!--</android.support.constraint.ConstraintLayout>-->
