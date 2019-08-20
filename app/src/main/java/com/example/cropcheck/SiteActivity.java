@@ -12,19 +12,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cropcheck.adapters.PolicyAdapter;
-import com.example.cropcheck.models.Policy;
 import com.example.cropcheck.models.Season;
-import com.example.cropcheck.models.Site;
 import com.example.cropcheck.models.User;
 import com.example.cropcheck.services.SeasonService;
-import com.example.cropcheck.services.SiteService;
 import com.example.cropcheck.services.UserService;
 import com.example.cropcheck.utils.CoreUtils;
-
-import java.util.Date;
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
