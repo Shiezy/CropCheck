@@ -33,6 +33,8 @@ public class ImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
         Bundle b = getIntent().getExtras();
+        imageList = new ArrayList<>();
+
         if(b != null) {
             farm_id = b.getInt("farm_id");
             season_id = b.getInt("season_id");
@@ -50,26 +52,21 @@ public class ImageActivity extends AppCompatActivity {
 
         rv.setAdapter(adapter);
         adapter.passparams(farm_id, season_id);
-        imageList = new ArrayList<>();
 
 
-        Call<List<Image>> call = CoreUtils.getAuthRetrofitClient(getToken()).create(ImageService.class).getImage(2, 1);
-        call.enqueue(new Callback<List<Image>>() {
+        Call<List<ImageList>> call = CoreUtils.getAuthRetrofitClient(getToken()).create(ImageService.class).getImage(farm_id, season_id);
+        call.enqueue(new Callback<List<ImageList>>() {
             @Override
-            public void onResponse(Call<List<Image>> call, Response<List<Image>> response) {
+            public void onResponse(Call<List<ImageList>> call, final Response<List<ImageList>> response) {
                 if (response.isSuccessful()){
-                    images = response.body();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),"successful",Toast.LENGTH_SHORT).show();
-                            for (int i = 0; i<images.size(); i++){
-                                String filename = images.get(i).getFilename();
-                                imageList.add(new ImageList(filename));
-                            }
-                            imageList.add(new ImageList(true));
+                            List<ImageList> im=response.body();
+                            im.add(new ImageList(true));
 
-                            adapter.updateData(imageList);
+                            adapter.updateData(im);
+
                         }
                     });
                 } else {
@@ -79,17 +76,16 @@ public class ImageActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Image>> call, Throwable t) {
+            public void onFailure(Call<List<ImageList>> call, Throwable t) {
 
                 Toast.makeText(getApplicationContext(),"failed",Toast.LENGTH_SHORT).show();
             }
         });
 
-//        imageList = new ArrayList<>();
-//        imageList.add(new ImageList("5d540c1696499.jpg"));
-//        imageList.add(new ImageList("5d540c1696499.jpg"));
-//        imageList.add(new ImageList("5d540c1696499.jpg"));
-//        imageList.add(new ImageList("5d540c1696499.jpg"));
+
+        imageList.add(new ImageList(true));
+
+        adapter.updateData(imageList);
 
 
 

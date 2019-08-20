@@ -14,12 +14,12 @@ public interface SeasonService {
     @GET("is_on_season/{site_id}")
     Call<Integer> isOnSeason(@Path("site_id") int site_id);
 
-    @GET("is_on_season/{site_id}")
+    @GET("get_season/{site_id}")
     Call<Season> getSeason(@Path("site_id") int site_id);
 
     @POST("end_season/{season_id}")
     Call<Season> endSeason(@Path("season_id") int season_id);
 
-    @POST("new_season/{site_id}")
+    @POST("start_season/{site_id}")
     Call<Season> startSeason(@Path("site_id") int site_id);
 }

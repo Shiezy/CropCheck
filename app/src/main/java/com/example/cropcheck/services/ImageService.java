@@ -1,6 +1,7 @@
 package com.example.cropcheck.services;
 
 import com.example.cropcheck.models.Image;
+import com.example.cropcheck.models.ImageList;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -17,9 +18,9 @@ import retrofit2.http.Path;
 public interface ImageService {
     @Multipart
     @POST("add_farm_image")
-    Call<Image> uploadImage(@Part MultipartBody.Part file, @Part("season_id") RequestBody season_id, @Part("farm_id") RequestBody farm_id);
+    Call<Image> uploadImage(@Part MultipartBody.Part file, @Part("farm_id") RequestBody farm_id, @Part("season_id") RequestBody season_id );
 
 
     @GET("farm_images/{farm_id}/{season_id}")
-    Call<List<Image>> getImage(@Path("farm_id") int farm_id, @Path("season_id") int season_id);
+    Call<List<ImageList>> getImage(@Path("farm_id") int farm_id, @Path("season_id") int season_id);
 }
