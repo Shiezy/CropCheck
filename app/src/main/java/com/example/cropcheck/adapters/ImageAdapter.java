@@ -18,19 +18,21 @@ import com.example.cropcheck.models.ImageList;
 import com.example.cropcheck.utils.CoreUtils;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public  class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.GridItemViewHolder> {
 
 
     private Context c;
-    private List<ImageList> imageList;
+    private List<ImageList> imageList = new ArrayList<>();
     private int farm_id;
     private int season_id;
 
     public void updateData(List<ImageList> imageList) {
 
         this.imageList = imageList;
+        this.notifyDataSetChanged();
     }
 
     public void passparams(int farm_id, int season_id){
@@ -99,7 +101,7 @@ public  class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.GridItemVie
                 @Override
                 public void onClick(View v) {
                     Intent t = new Intent(c, UploadImageActivity.class);
-                    Toast.makeText(c,"Add photo",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c,"Add photo"+farm_id,Toast.LENGTH_SHORT).show();
                     Bundle b = new Bundle();
                     b.putInt("farm_id", farm_id); //Your id
                     b.putInt("season_id", season_id); //Your id
