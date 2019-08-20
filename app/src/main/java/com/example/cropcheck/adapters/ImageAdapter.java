@@ -83,7 +83,7 @@ public  class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.GridItemVie
             final String file_name = imageList.get(position).filename;
 
             Picasso.get()
-                    .load(CoreUtils.base_url +"get_farm_images/"+file_name)
+                    .load(CoreUtils.base_url +"get_farm_images/"+file_name+"/"+season_id)
                     .resize(250, 250)
                     .centerCrop()
                     .into(holder.siv);
