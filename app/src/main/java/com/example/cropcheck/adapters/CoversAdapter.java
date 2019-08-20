@@ -25,8 +25,8 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
 
     public CoversAdapter(Context context){
         this.context = context;
-
     }
+
     public void updateData(List<Cover> covers) {
 
         this.covers = covers;
