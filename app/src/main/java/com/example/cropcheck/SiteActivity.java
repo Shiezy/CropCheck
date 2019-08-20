@@ -147,28 +147,6 @@ public class SiteActivity extends AppCompatActivity {
         return PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("ACCESS_TOKEN", null);
     }
 
-//    private void loadPolicies() {
-//        Call<List<Policy>> policies = CoreUtils.getAuthRetrofitClient(getToken()).create(SiteService.class).getSitePolicies(site_id);
-//        policies.enqueue(new Callback<List<Policy>>() {
-//            @Override
-//            public void onResponse(Call<List<Policy>> call, final Response<List<Policy>> response) {
-//                if(response.isSuccessful()){
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            dataReceived(response.body());
-//                        }
-//                    });
-//                }
-////                else   Toast.makeText(getApplicationContext(),response.errorBody().toString(),Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Policy>> call, Throwable t) {
-//
-//            }
-//        });
-//    }
     private void loadSeasonDets(){
         final TextView season_dets = (TextView) findViewById(R.id.season_dets);
         final TextView season_start_date = (TextView) findViewById(R.id.season_start_date);

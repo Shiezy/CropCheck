@@ -59,8 +59,8 @@ public class UploadImageActivity extends AppCompatActivity {
             season_id = 1;
         }
 
-        String value = String.valueOf(season_id);
-        Toast.makeText(getApplicationContext(),value,Toast.LENGTH_SHORT).show();
+//        String value = String.valueOf(season_id);
+//        Toast.makeText(getApplicationContext(),value,Toast.LENGTH_SHORT).show();
 
         Permissions.check(this/*context*/, Manifest.permission.READ_EXTERNAL_STORAGE, null, new PermissionHandler() {
             @Override
@@ -167,13 +167,11 @@ public class UploadImageActivity extends AppCompatActivity {
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.show();
             RequestBody mFile=RequestBody.create(MediaType.parse("image/*"), file);
-            season_id =1;
-            farm_id = 2;
             RequestBody season_id_req = RequestBody.create(MediaType.parse("text/plain"), season_id +"");
             RequestBody farm_id_req = RequestBody.create(MediaType.parse("text/plain"), farm_id +"");
             fileToUpload= MultipartBody.Part.createFormData("filename", file.getName(), mFile);
 
-            Call<Image> call = CoreUtils.getAuthRetrofitClient(getToken()).create(ImageService.class).uploadImage(fileToUpload, season_id_req, farm_id_req);
+            Call<Image> call = CoreUtils.getAuthRetrofitClient(getToken()).create(ImageService.class).uploadImage(fileToUpload, farm_id_req, season_id_req);
             call.enqueue(new Callback<Image>() {
                 @Override
                 public void onResponse(Call<Image> call, final Response<Image> response) {
