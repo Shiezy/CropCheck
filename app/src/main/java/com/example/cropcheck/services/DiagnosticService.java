@@ -17,7 +17,7 @@ public interface DiagnosticService {
     @GET("get_season_diagnostic")
     Call<List<Diagnostic>> getSeasonDiagnostics(@Path("season_id") int season_id);
 
-    @GET("diagnose/farm_id/season_id")
-    Call<Cover> getDiagnostics(@Path("farm_id") int farm_id, @Path("season_id") int season_id);
+    @GET("diagnoses/{farm_id}/{season_id}")
+    Call<List<Diagnostic>> getDiagnostics(@Path("farm_id") int site_id, @Path("season_id") int season_id);
 
 }

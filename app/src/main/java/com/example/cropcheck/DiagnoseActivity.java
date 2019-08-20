@@ -23,6 +23,7 @@ import retrofit2.Response;
 public class DiagnoseActivity extends AppCompatActivity {
 
     Integer season_id;
+    Integer site_id;
     DiagnosticsAdapter myAdapter;
     Integer user_id;
     RecyclerView recyclerView;
@@ -45,11 +46,12 @@ public class DiagnoseActivity extends AppCompatActivity {
                 season_id = null;
                 Toast.makeText(getApplicationContext(), "SITE ID is null" , Toast.LENGTH_SHORT).show();
             } else {
-                season_id = extras.getInt("site_id");
+                season_id = extras.getInt("season_id");
+                site_id = extras.getInt("site_id");
                 Toast.makeText(getApplicationContext(), ""+season_id , Toast.LENGTH_SHORT).show();
             }
         } else {
-            season_id = (Integer) savedInstanceState.getSerializable("site_id");
+            season_id = (Integer) savedInstanceState.getSerializable("season_id");
         }
 
         final Call<User> user = CoreUtils.getAuthRetrofitClient(getToken()).create(UserService.class).user();
@@ -70,7 +72,7 @@ public class DiagnoseActivity extends AppCompatActivity {
     }
 
     public void loadDiagnostics(){
-        Call<List<Diagnostic>> diagnostic = CoreUtils.getAuthRetrofitClient(getToken()).create(DiagnosticService.class).getSeasonDiagnostics(season_id);
+        Call<List<Diagnostic>> diagnostic = CoreUtils.getAuthRetrofitClient(getToken()).create(DiagnosticService.class).getDiagnostics(site_id, season_id);
         diagnostic.enqueue(new Callback<List<Diagnostic>>() {
             @Override
             public void onResponse(Call<List<Diagnostic>> call, Response<List<Diagnostic>> response) {

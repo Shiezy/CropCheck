@@ -138,6 +138,7 @@ public class SiteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SiteActivity.this, DiagnoseActivity.class);
                 myIntent.putExtra("season_id",season_id);
+                myIntent.putExtra("site_id",site_id);
                 startActivity(myIntent);
             }
         }));
