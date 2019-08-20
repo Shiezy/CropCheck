@@ -120,7 +120,6 @@ public class ApplyPolicyActivity extends AppCompatActivity {
                     public void onResponse(Call<PolicyApplication> call, Response<PolicyApplication> response) {
                         if (response.isSuccessful()) {
 //                            startActivity(new Intent(AddSiteActivity.this, AllSitesActivity.class));
-                            Toast.makeText(getApplicationContext(), "Successful!", Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
