@@ -6,6 +6,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <!--<color name="colorPrimaryDark">#00574B</color>-->
     <color name="colorAccent">#D81B60</color>
+    <color name="colorDanger">#d10823</color>
+    <color name="colorBlue">#0d62bd</color>
     <color name="colorGrey">#302D2D</color>
     <color name="colorEditText">#90b8b9ba</color>
     <color name="primaryGreen">#60BF01</color>

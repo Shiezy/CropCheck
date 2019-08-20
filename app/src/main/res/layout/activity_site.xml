@@ -258,7 +258,7 @@
 
             <Button
                 android:id="@+id/myImages"
-                android:text="View Images"
+                android:text="Diagnose"
                 android:textSize="8sp"
                 android:textColor="#000"
                 android:textStyle="bold"
