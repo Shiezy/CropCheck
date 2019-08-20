@@ -40,6 +40,7 @@ public class SiteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site);
         final Button btnSetSeason = findViewById(R.id.btnSeason);
+        final Button diagnosis = findViewById(R.id.diagnosis);
         final TextView siteDetailsCounty = findViewById(R.id.site_dets_county);
         final TextView siteDetailsDivision = findViewById(R.id.site_dets_division);
         final TextView siteDetailsVillage = findViewById(R.id.site_dets_village);
@@ -131,6 +132,17 @@ public class SiteActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         }));
+
+        diagnosis.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SiteActivity.this, DiagnoseActivity.class);
+                myIntent.putExtra("season_id",season_id);
+                startActivity(myIntent);
+            }
+        }));
+
+
 
         coversButton = findViewById(R.id.coversButton);
         coversButton.setOnClickListener((new View.OnClickListener() {
