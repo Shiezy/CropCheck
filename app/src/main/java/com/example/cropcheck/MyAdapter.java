@@ -31,16 +31,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView site_name;
-        public TextView village;
         public TextView county;
-        public TextView division;
         public TextView tvCounter;
         public MyViewHolder(View v) {
             super(v);
             site_name = v.findViewById(R.id.site_name);
-            village = v.findViewById(R.id.village);
             county = v.findViewById(R.id.county);
-            division = v.findViewById(R.id.division);
             tvCounter = v.findViewById(R.id.tvCounter);
         }
     }
@@ -68,12 +64,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         final Site current = sites.get(position);
 
-//        holder.tvCounter.setText(position);
-
-        holder.site_name.setText(sites.get(position).getSite_name());
-        holder.village.setText(sites.get(position).getVillage());
+        Integer b_looper = position+1;
+        String looper = " " + b_looper + ". ";
+        holder.tvCounter.setText(looper);
+        String name = sites.get(position).getSite_name()+",";
+        holder.site_name.setText(name);
         holder.county.setText(sites.get(position).getCounty());
-        holder.division.setText(sites.get(position).getDivision());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +81,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 t.putExtra("county", current.getCounty());
                 t.putExtra("village", current.getVillage());
                 v.getContext().startActivity(t);
-//                Toast.makeText(context, "You Clicked This Item" ,Toast.LENGTH_SHORT).show();
             }
         });
     }

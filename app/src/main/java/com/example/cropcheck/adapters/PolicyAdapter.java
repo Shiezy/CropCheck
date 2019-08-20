@@ -40,6 +40,7 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
 
             public TextView title;
             public ImageView direction_button;
+            public TextView tvCounter;
 
             public ViewHolder(View itemView) {
                 // Stores the itemView in a public final member variable that can be used
@@ -47,6 +48,7 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
                 super(itemView);
                 direction_button = (ImageView) itemView.findViewById(R.id.direction_button);
                 title = (TextView) itemView.findViewById(R.id.policyTitle);
+                tvCounter = itemView.findViewById(R.id.tvCounter);
             }
         }
 
@@ -70,9 +72,14 @@ public class PolicyAdapter extends RecyclerView.Adapter<PolicyAdapter.ViewHolder
         // Get the data model based on position
         final Policy policy = policies.get(position);
 
+        Integer b_looper = position+1;
+        String looper = " " + b_looper + ". ";
+        viewHolder.tvCounter.setText(looper);
+        String name = policy.getTitle()+",";
+
         // Set item views based on your views and data model
         TextView textView = viewHolder.title;
-        textView.setText(policy.getTitle());
+        textView.setText(name);
 
         viewHolder.direction_button.setOnClickListener(new View.OnClickListener() {
             @Override

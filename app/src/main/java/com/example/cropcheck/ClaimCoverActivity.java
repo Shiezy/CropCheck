@@ -122,7 +122,7 @@ public class ClaimCoverActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Claim> call, Response<Claim> response) {
                         if (response.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Claim Successful!", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Claim Successful!", Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();

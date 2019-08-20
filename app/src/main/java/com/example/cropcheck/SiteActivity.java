@@ -26,6 +26,7 @@ public class SiteActivity extends AppCompatActivity {
     Integer site_id;
     String village;
     String county;
+    String division;
     String site_name;
     Integer user_id;
     Integer season_id;
@@ -39,7 +40,10 @@ public class SiteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_site);
         final Button btnSetSeason = findViewById(R.id.btnSeason);
-        final TextView siteDetails = findViewById(R.id.site_dets);
+        final TextView siteDetailsCounty = findViewById(R.id.site_dets_county);
+        final TextView siteDetailsDivision = findViewById(R.id.site_dets_division);
+        final TextView siteDetailsVillage = findViewById(R.id.site_dets_village);
+        final TextView siteDetailsName = findViewById(R.id.site_dets_name);
         final Button siteImages = findViewById(R.id.images);
 
         if (savedInstanceState == null) {
@@ -48,11 +52,13 @@ public class SiteActivity extends AppCompatActivity {
                 site_id = null;
                 village = null;
                 county = null;
+                division = null;
                 site_name = null;
                 Toast.makeText(getApplicationContext(), "SITE ID is null" , Toast.LENGTH_SHORT).show();
             } else {
                 site_id = extras.getInt("id");
                 village = extras.getString("village");
+                division = extras.getString("division");
                 county = extras.getString("county");
                 site_name = extras.getString("site_name");
 //                Toast.makeText(getApplicationContext(), ""+site_id , Toast.LENGTH_SHORT).show();
@@ -73,9 +79,11 @@ public class SiteActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            siteDetails.setText(site_name + " " + village +" "+county);
+                            siteDetailsCounty.setText(county);
+                            siteDetailsDivision.setText(division);
+                            siteDetailsVillage.setText(village);
+                            siteDetailsName.setText(site_name);
                             loadSeasonDets();
-//                            loadPolicies();
 
                         }
                     });
@@ -142,6 +150,7 @@ public class SiteActivity extends AppCompatActivity {
     private void loadSeasonDets(){
         final TextView season_dets = (TextView) findViewById(R.id.season_dets);
         final TextView season_start_date = (TextView) findViewById(R.id.season_start_date);
+        final TextView season_end_date = (TextView) findViewById(R.id.season_end_date);
         final Button btnSetSeason = (Button) findViewById(R.id.btnSeason);
 
         Call<Integer> isOnSeason = CoreUtils.getAuthRetrofitClient(getToken()).create(SeasonService.class).isOnSeason(site_id);
@@ -170,9 +179,11 @@ public class SiteActivity extends AppCompatActivity {
                                                    public void run() {
                                                        int status = response.body().getStatus();
                                                        String startDate = response.body().getStart_date();
+                                                       String endDate = response.body().getEnd_date();
                                                        season_id = response.body().getId();
                                                        season_dets.setText("Has been in season since");
                                                        season_start_date.setText(startDate);
+                                                       season_end_date.setText(endDate);
                                                        btnSetSeason.setText("End Season");
 
                                                    }
